@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: services
+#
+#  id          :bigint           not null, primary key
+#  name        :string
+#  parent      :string
+#  description :text
+#  status      :string
+#  user_id     :bigint
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  parent: MyString
+  description: MyText
+  status: MyString
+
+two:
+  name: MyString
+  parent: MyString
+  description: MyText
+  status: MyString

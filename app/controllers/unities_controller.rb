@@ -1,9 +1,5 @@
 class UnitiesController < ApplicationController
-  before_action :authenticate_user!
-
   before_action :set_unity, only: [:show, :edit, :update, :destroy]
-
-  layout "dashboard"
 
   # GET /unities
   # GET /unities.json
@@ -28,18 +24,15 @@ class UnitiesController < ApplicationController
   # POST /unities
   # POST /unities.json
   def create
-    @unity = current_user.unities.build(unity_params)
+    @unity = Unity.new(unity_params)
 
     respond_to do |format|
       if @unity.save
-        @unities = Unity.all
         format.html { redirect_to @unity, notice: 'Unity was successfully created.' }
         format.json { render :show, status: :created, location: @unity }
-        format.js
       else
         format.html { render :new }
         format.json { render json: @unity.errors, status: :unprocessable_entity }
-        format.js
       end
     end
   end
@@ -49,20 +42,13 @@ class UnitiesController < ApplicationController
   def update
     respond_to do |format|
       if @unity.update(unity_params)
-        @unities = Unity.all
         format.html { redirect_to @unity, notice: 'Unity was successfully updated.' }
         format.json { render :show, status: :ok, location: @unity }
-        format.js
       else
         format.html { render :edit }
         format.json { render json: @unity.errors, status: :unprocessable_entity }
-        format.js
       end
     end
-  end
-
-  def delete
-    @unity = Unity.find(params[:unity_id])
   end
 
   # DELETE /unities/1
@@ -81,8 +67,8 @@ class UnitiesController < ApplicationController
       @unity = Unity.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Only allow a list of trusted parameters through.
     def unity_params
-      params.require(:unity).permit(:name, :unity_symbol, :description)
+      params.require(:unity).permit(:name, :unity_symbol, :description, :status, :user_id)
     end
 end

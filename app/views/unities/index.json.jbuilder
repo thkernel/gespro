@@ -1,1 +1,1 @@
-json.array! @unities, partial: 'unities/unity', as: :unity
+json.array! @unities, partial: "unities/unity", as: :unity

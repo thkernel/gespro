@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: unities
+#
+#  id           :bigint           not null, primary key
+#  name         :string
+#  unity_symbol :string
+#  description  :text
+#  status       :string
+#  user_id      :bigint
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  unity_symbol: MyString
+  description: MyText
+  status: MyString
+  user: one
+
+two:
+  name: MyString
+  unity_symbol: MyString
+  description: MyText
+  status: MyString
+  user: two
