@@ -6,8 +6,22 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+set :application, "gedwin.prod"               # the name of your website - should also be the name of the directory
+set :deploy_to, "/home/ubuntu/rails-apps/gespro/gespro.prod"   # the path to your new deployment directory on the server - by default, the name of the application (e.g. "/var/www/sites/example.com")
+set :rails_env, "production"
+
+#server "51.38.235.131", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
+server "51.38.235.131", user: "root", roles: %w{app db web}, ssh_options: {forward_agent: true}
+
+set :branch, "master"
+set :port, 3030
 
 
+
+
+ set :nginx_config_name, "gespro.prod"
+ set :nginx_server_name, "gespro.prod"
+ set :puma_workers, 1
 
 # role-based syntax
 # ==================
@@ -42,7 +56,7 @@
 # Global options
 # --------------
 #  set :ssh_options, {
-#    keys: %w(/home/user_name/.ssh/id_rsa),
+#    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }
@@ -59,3 +73,12 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+=begin
+set :pty, true
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: ["publickey"],
+  keys: ["~/projects/rails/outin/outin-ec2-25-05-2019.pem"]
+}
+=end
