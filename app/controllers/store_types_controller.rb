@@ -1,6 +1,9 @@
 class StoreTypesController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_store_type, only: [:show, :edit, :update, :destroy]
 
+  layout "dashboard"
   # GET /store_types
   # GET /store_types.json
   def index
@@ -24,12 +27,16 @@ class StoreTypesController < ApplicationController
   # POST /store_types
   # POST /store_types.json
   def create
-    @store_type = StoreType.new(store_type_params)
+    @store_type = current_user.store_types.build(store_type_params)
 
     respond_to do |format|
       if @store_type.save
+
+        @store_types = StoreType.all
+
         format.html { redirect_to @store_type, notice: 'Store type was successfully created.' }
         format.json { render :show, status: :created, location: @store_type }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @store_type.errors, status: :unprocessable_entity }
@@ -42,14 +49,21 @@ class StoreTypesController < ApplicationController
   def update
     respond_to do |format|
       if @store_type.update(store_type_params)
+        @store_types = StoreType.all
         format.html { redirect_to @store_type, notice: 'Store type was successfully updated.' }
         format.json { render :show, status: :ok, location: @store_type }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @store_type.errors, status: :unprocessable_entity }
       end
     end
   end
+
+def delete
+  @store_type = StoreType.find(params[:store_type_id])
+end
+
 
   # DELETE /store_types/1
   # DELETE /store_types/1.json
@@ -69,6 +83,6 @@ class StoreTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def store_type_params
-      params.require(:store_type).permit(:name, :description, :status, :user_id)
+      params.require(:store_type).permit(:name, :description)
     end
 end

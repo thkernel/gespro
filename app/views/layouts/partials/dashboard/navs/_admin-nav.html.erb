@@ -58,7 +58,7 @@
           <ul class="br-menu-sub">
             
             <li class="sub-item">
-                <%= link_to  "Matériels", root_path, class: "sub-link" %>
+                <%= link_to  "Matériels", materials_path, class: "sub-link" %>
             </li>
              <li class="sub-item">
                 <%= link_to  "Locations", root_path, class: "sub-link" %>
@@ -77,10 +77,10 @@
           <ul class="br-menu-sub">
             
             <li class="sub-item">
-                <%= link_to  "Produits", root_path, class: "sub-link" %>
+                <%= link_to  "Produits", products_path, class: "sub-link" %>
             </li>
              <li class="sub-item">
-                <%= link_to  "Mouvements de stock", root_path, class: "sub-link" %>
+                <%= link_to  "Mouvements de stock", movements_path, class: "sub-link" %>
             </li>
           </ul>
         </li>
@@ -121,6 +121,18 @@
 
             <li class="sub-item">
                 <%= link_to  "Types de mouvement", movement_types_path, class: "sub-link" %>
+            </li>
+             <li class="sub-item">
+                <%= link_to  "Types de matériel", material_types_path, class: "sub-link" %>
+            </li>
+            <li class="sub-item">
+                <%= link_to  "Types d'entrepôt", store_types_path, class: "sub-link" %>
+            </li>
+            <li class="sub-item">
+                <%= link_to  "Types de client", customer_types_path, class: "sub-link" %>
+            </li>
+             <li class="sub-item">
+                <%= link_to  "Types de forunisseur", provider_types_path, class: "sub-link" %>
             </li>
              <li class="sub-item">
                 <%= link_to  "Entrepôts", stores_path, class: "sub-link" %>

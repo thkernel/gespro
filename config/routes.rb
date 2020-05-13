@@ -1,23 +1,55 @@
 Rails.application.routes.draw do
-  resources :store_types
-  resources :materials
-  resources :material_types
-  resources :stores
-  resources :movement_types
-  resources :provider_types
-  resources :customer_types
-  resources :unities
-  resources :product_categories
+  resources :store_types do 
+    get "delete"
+  end
+  resources :materials do 
+    get "delete"
+  end
+  resources :material_types do 
+    get "delete"
+  end
+  resources :stores do 
+    get "delete"
+  end
+  resources :movement_types do 
+    get "delete"
+  end
+  resources :provider_types do 
+    get "delete"
+  end
+  resources :customer_types do 
+    get "delete"
+  end
+  resources :unities do 
+    get "delete"
+  end
+  resources :product_categories do 
+    get "delete"
+  end
   resources :product_types
-  resources :customers
-  resources :providers
-  resources :services
-  resources :companies
+  resources :customers do 
+    get "delete"
+  end
+  resources :providers do 
+    get "delete"
+  end
+  resources :services do 
+    get "delete"
+  end
+  resources :companies do 
+    get "delete"
+  end
   resources :profiles
   #devise_for :users
-  resources :permission_roles
-  resources :permissions
-  resources :roles
+  resources :permission_roles do 
+    get "delete"
+  end
+  resources :permissions do 
+    get "delete"
+  end
+  resources :roles do 
+    get "delete"
+  end
 
   get "/dashboard" => "dashboard#index" , as: :dashboard
 

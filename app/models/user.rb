@@ -40,7 +40,11 @@ class User < ApplicationRecord
 	belongs_to :role
 	
 	has_one  :profile, dependent: :destroy
-	
+	has_many :product_categories, dependent: :destroy
+	has_many :movement_types, dependent: :destroy
+	has_many :store_types, dependent: :destroy
+	has_many :stores, dependent: :destroy
+
 
 
 

@@ -13,4 +13,5 @@
 
 class StoreType < ApplicationRecord
   belongs_to :user
+  has_many :stores, dependent: :destroy
 end

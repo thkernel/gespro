@@ -1,42 +1,35 @@
-<%= form_with(model: store, local: true) do |form| %>
-  <% if store.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+<%= form_with(model: store, local: false) do |form| %>
+ 
+  <div class="modal-body">
+  
+        <ul class="errors">
+        </ul>
 
-      <ul>
-      <% store.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="form-group">
+          <%= form.label :store_type_id, "Type"  %>
+          <%= form.collection_select(:store_type_id, @store_types, :id, :name, {prompt: "Sélectionner"}, class: "form-control", required: true) %> 
+        </div>
+
+  <div class="form-group">
+    <%= form.label :name, "Nom", class: "required" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Nom", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address, "Adresse" %>
+    <%= form.text_field :address, class: "form-control", placeholder: "Adresse" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city, "Ville" %>
+    <%= form.text_field :city , class: "form-control", placeholder: "Ville" %>
+  </div>
+
+  
+
+  </div><!-- modal body -->
+     <div class="modal-footer">
+            <%= link_to "Annuler", "#", class: "btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1", data: {dismiss: "modal"} %>
+            <%= form.submit "Enregistrer", class: "btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
